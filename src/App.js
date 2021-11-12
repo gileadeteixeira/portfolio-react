@@ -1,17 +1,28 @@
+import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import GitInfo from 'react-git-info/macro';
-
-function getVersion(){
-  const gitInfo = GitInfo();
-  return gitInfo.tags.pop().replace("v", "");
-}
+import { getCurrentVersionTag } from './services/github-services'
 
 function getCurrentYear(){
   return new Date().getFullYear();
-}
+};
 
 function App() {
+  // States
+  const [version, setVersion] = useState('0.0.1');
+
+  // Hooks
+  useEffect(() => {
+    // New title
+    document.title = `Gileade Teixeira`;
+
+    // Load current git version
+    (async ()=>{
+      const currentVersionTag = await getCurrentVersionTag();
+      setVersion(currentVersionTag);
+    })();
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,11 +30,11 @@ function App() {
         <p>
           {`Developed by Gileade Teixeira`}
           <br/>
-          <i>{`${getCurrentYear()}, version ${getVersion()}`}</i>
+          <i>{`${getCurrentYear()}, version ${version}`}</i>
         </p>
       </header>
     </div>
   );
-}
+};
 
 export default App;
