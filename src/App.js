@@ -1,5 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import GitInfo from 'react-git-info/macro';
+
+function getVersion(){
+  const gitInfo = GitInfo();
+  return gitInfo.tags.pop().replace("v", "");
+}
+
+function getCurrentYear(){
+  return new Date().getFullYear();
+}
 
 function App() {
   return (
@@ -7,16 +17,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload!
+          {`Developed by Gileade Teixeira`}
+          <br/>
+          <i>{`${getCurrentYear()}, version ${getVersion()}`}</i>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
