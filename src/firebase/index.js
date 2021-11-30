@@ -21,5 +21,5 @@ getAnalytics(app);
 
 // Exports
 export const Firebase = firebase;
-export const Storage = storage.getStorage();
-export const Firestore = firestore.getFirestore();
+export const Storage = storage
+export const Firestore = firestore;

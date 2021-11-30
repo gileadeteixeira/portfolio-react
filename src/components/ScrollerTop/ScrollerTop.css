@@ -1,0 +1,46 @@
+/* ===== SCROLLER TOP ===== */
+.scroller__top{
+    position: fixed;
+    right: 1em;
+    bottom: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    border-radius: .5em;
+    z-index: var(--z-normal);
+    transition: .3s;
+    background-color: var(--medium-grey);
+    visibility: hidden;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+}
+
+#scroller-top-icon{
+    font-size: 1.5em;
+    color: var(--white);
+}
+
+@media (pointer: fine) {
+    .scroller__top:hover{
+        background-color: var(--light-grey);
+    }
+
+    .scroller__top:hover #scroller-top-icon{
+        color: var(--dark-grey);
+    }
+}
+
+.scroller__top:active{
+    background-color: var(--light-grey);
+}
+
+.scroller__top:active #scroller-top-icon{
+    color: var(--dark-grey);
+}
+
+
+/* ===== SHOW SCROLL TOP ===== */
+.scroller__top__open{
+    visibility: visible;
+    bottom: 1.5em;
+}
